@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pham Hai Hoang</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --accent: #4f8ef7;
+      --accent2: #7c5cbf;
+      --text: #e8eaf0;
+      --muted: #8b90a4;
+      --gold: #f0c040;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15,17,23,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 60px;
+    }
+    .nav-logo {
+      font-weight: 700; font-size: 1.1rem; color: var(--accent);
+      letter-spacing: 0.5px;
+    }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 80px 2rem 3rem;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(79,142,247,0.12) 0%, transparent 70%);
+      text-align: center;
+    }
+    .hero-inner { max-width: 680px; }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(79,142,247,0.12);
+      border: 1px solid rgba(79,142,247,0.3);
+      color: var(--accent);
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px; border-radius: 20px; margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 800; line-height: 1.1;
+      background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .hero-sub {
+      font-size: 1.15rem; color: var(--muted); margin-bottom: 1.4rem;
+      max-width: 560px; margin-left: auto; margin-right: auto;
+    }
+    .hero-new-role {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(240,192,64,0.1); border: 1px solid rgba(240,192,64,0.3);
+      color: var(--gold); border-radius: 8px;
+      padding: 8px 16px; font-size: 0.88rem; font-weight: 500;
+      margin-bottom: 2rem;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold);
+      animation: pulse 1.8s ease-in-out infinite; }
+    @keyframes pulse {
+      0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)}
+    }
+    .cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: 8px;
+      font-size: 0.95rem; font-weight: 600; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+    }
+    .btn-primary:hover { background: #3a7de8; transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+    /* Section */
+    section { padding: 80px 2rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+    }
+    h2 {
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: 700; margin-bottom: 2rem;
+    }
+
+    /* About */
+    #about { background: var(--surface); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    @media(max-width:600px){ .about-grid{ grid-template-columns:1fr; } }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.2rem; }
+    .pill {
+      background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.25);
+      color: var(--accent); border-radius: 6px;
+      padding: 4px 12px; font-size: 0.82rem; font-weight: 500;
+    }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.2rem; text-align: center;
+    }
+    .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+    .stat-lbl { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+    /* Experience */
+    #experience { background: var(--bg); }
+    .timeline { position: relative; padding-left: 1.5rem; }
+    .timeline::before {
+      content:''; position: absolute; left: 0; top: 8px; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .tl-item { position: relative; margin-bottom: 2.5rem; }
+    .tl-item::before {
+      content:''; position:absolute; left:-1.8rem; top:6px;
+      width:10px; height:10px; border-radius:50%;
+      background:var(--accent); border:2px solid var(--bg);
+    }
+    .tl-header { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:4px; }
+    .tl-company { font-weight:700; font-size:1rem; }
+    .tl-period { color:var(--muted); font-size:0.82rem; }
+    .tl-role { color:var(--accent); font-size:0.88rem; font-weight:600; margin:2px 0 8px; }
+    .tl-loc { color:var(--muted); font-size:0.8rem; margin-bottom:8px; }
+    .tl-bullets { list-style:none; }
+    .tl-bullets li {
+      color:var(--muted); font-size:0.88rem; padding:3px 0 3px 1.1rem; position:relative;
+    }
+    .tl-bullets li::before {
+      content:'▸'; position:absolute; left:0; color:var(--accent); font-size:0.7rem; top:5px;
+    }
+
+    /* Education */
+    #education { background: var(--surface); }
+    .edu-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; }
+    .edu-card {
+      background:var(--bg); border:1px solid var(--border); border-radius:12px;
+      padding:1.4rem; transition:border-color 0.2s;
+    }
+    .edu-card:hover { border-color:var(--accent); }
+    .edu-degree { font-weight:700; margin-bottom:4px; }
+    .edu-school { color:var(--accent); font-size:0.88rem; margin-bottom:4px; }
+    .edu-year { color:var(--muted); font-size:0.8rem; }
+    .edu-badge {
+      display:inline-block; margin-top:8px;
+      background:rgba(240,192,64,0.1); border:1px solid rgba(240,192,64,0.25);
+      color:var(--gold); border-radius:4px; padding:2px 8px; font-size:0.75rem;
+    }
+
+    /* Skills */
+    #skills { background: var(--bg); }
+    .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.2rem; }
+    .skill-group {
+      background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.2rem;
+    }
+    .skill-group-title { font-size:0.78rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--accent); margin-bottom:0.8rem; }
+    .skill-tags { display:flex; flex-wrap:wrap; gap:6px; }
+    .skill-tag {
+      background:rgba(255,255,255,0.05); border:1px solid var(--border);
+      border-radius:5px; padding:3px 10px; font-size:0.8rem; color:var(--muted);
+    }
+
+    /* Contact */
+    #contact { background: var(--surface); text-align:center; }
+    #contact h2 { margin-bottom:0.5rem; }
+    #contact p { color:var(--muted); margin-bottom:2rem; }
+    .contact-cards {
+      display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;
+    }
+    .contact-card {
+      display:flex; align-items:center; gap:10px;
+      background:var(--bg); border:1px solid var(--border); border-radius:10px;
+      padding:12px 20px; text-decoration:none; color:var(--text);
+      font-size:0.9rem; transition:border-color 0.2s, color 0.2s;
+    }
+    .contact-card:hover { border-color:var(--accent); color:var(--accent); }
+    .contact-card svg { width:18px; height:18px; flex-shrink:0; }
+
+    /* Footer */
+    footer {
+      text-align:center; padding:1.5rem 2rem;
+      border-top:1px solid var(--border); color:var(--muted); font-size:0.8rem;
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Pham Hai Hoang</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Strategic Business Analyst</div>
+    <h1>Pham Hai Hoang</h1>
+    <p class="hero-sub">
+      Corporate Development &middot; M&amp;A &middot; Commercial Excellence &middot; Data Analytics
+    </p>
+    <div class="hero-new-role">
+      <span class="dot"></span>
+      Joining Ufficio Intelligence Commerciale (UIC) &mdash; July 2026
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/pham-hai-hoang-b0055882/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn Profile
+      </a>
+      <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container reveal">
+    <div class="section-label">About</div>
+    <h2>Who I Am</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Strategic Business Analyst with a strong international profile and cross-cultural expertise. Proven track record in market expansion, M&amp;A execution, and cross-functional project leadership across pharma, F&amp;B, and industrial sectors.</p>
+        <p>Passionate about process optimization and automation, leveraging Power BI, Power Automate, and VBA to streamline workflows and drive data-driven decision-making.</p>
+        <p>EU Permanent Resident based in Italy. Trilingual in Vietnamese, English (C2), and Italian (C1).</p>
+        <div class="pills">
+          <span class="pill">M&amp;A</span>
+          <span class="pill">Corporate Development</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Data Analytics</span>
+          <span class="pill">APAC Markets</span>
+          <span class="pill">Investment Banking</span>
+        </div>
+      </div>
+      <div>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-num">3+</div><div class="stat-lbl">Years in Italy</div></div>
+          <div class="stat-card"><div class="stat-num">3</div><div class="stat-lbl">Languages</div></div>
+          <div class="stat-card"><div class="stat-num">€1M+</div><div class="stat-lbl">Sales Generated</div></div>
+          <div class="stat-card"><div class="stat-num">70%</div><div class="stat-lbl">Reporting Time Saved</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+  <div class="container reveal">
+    <div class="section-label">Experience</div>
+    <h2>Career Journey</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <span class="tl-company">Stevanato Group</span>
+          <span class="tl-period">May 2023 – Apr 2026</span>
+        </div>
+        <div class="tl-loc">📍 Piombino Dese, Italy</div>
+        <div class="tl-role">Business Analyst – Commercial Strategy <span style="color:var(--muted);font-weight:400">(Aug 2024 – Present)</span></div>
+        <ul class="tl-bullets">
+          <li>Built KPI and Power BI dashboards for demand forecasting, industrial planning, and sales tracking.</li>
+          <li>Provided weekly insights on budget and demand trends directly to C-level management.</li>
+          <li>Led the inventory sell-off initiative, generating €1M+ in sales within 2 years.</li>
+          <li>Automated reporting through VBA and Power Automate, cutting manual processing time by over 70%.</li>
+          <li>Trained account managers to enhance CRM use and data-driven sales execution.</li>
+        </ul>
+        <div class="tl-role" style="margin-top:1rem">Corporate Business Development <span style="color:var(--muted);font-weight:400">(May 2023 – Jul 2024)</span></div>
+        <ul class="tl-bullets">
+          <li>Expanded markets in Southeast Asia; secured Stevanato's first customer in Vietnam.</li>
+          <li>Developed and implemented investment and alliance strategies to support APAC market expansion.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <span class="tl-company">Conceria Zonta</span>
+          <span class="tl-period">Aug 2025 – Present</span>
+        </div>
+        <div class="tl-loc">📍 Remote (Consulting)</div>
+        <div class="tl-role">Digital &amp; Business Development Consultant</div>
+        <ul class="tl-bullets">
+          <li>Independently designed and developed the company's website, from concept to launch.</li>
+          <li>Initiated inventory digitalization &amp; sales activities aimed at expanding international B2B outreach.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <span class="tl-company">Fietta S.p.A.</span>
+          <span class="tl-period">May 2024 – Nov 2024</span>
+        </div>
+        <div class="tl-loc">📍 Remote (Consulting)</div>
+        <div class="tl-role">Import–Export Consultant</div>
+        <ul class="tl-bullets">
+          <li>Secured 2 suppliers, sourcing €2M in goods across categories, enhancing supply chain resilience.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <span class="tl-company">Daiwa Securities</span>
+          <span class="tl-period">Jul 2019 – Mar 2021</span>
+        </div>
+        <div class="tl-loc">📍 Hanoi, Vietnam</div>
+        <div class="tl-role">Investment Banking Analyst</div>
+        <ul class="tl-bullets">
+          <li>Advised a Japanese PE fund on acquiring a 20% stake in a cinema chain.</li>
+          <li>Assisted private buyers in acquiring a 20% stake from Japanese funds in a medical company.</li>
+          <li>Advised a leading fresh coconut producer on its IPO ($40M deal size).</li>
+          <li>Conducted sector and industry-specific research.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+  <div class="container reveal">
+    <div class="section-label">Education</div>
+    <h2>Academic Background</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">Master in Corporate Finance</div>
+        <div class="edu-school">SDA Bocconi, Milan</div>
+        <div class="edu-year">2023</div>
+        <div class="edu-badge">Top 10% GPA · Partial Scholarship</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Global MBA</div>
+        <div class="edu-school">Bologna Business School</div>
+        <div class="edu-year">2017</div>
+        <div class="edu-badge">Top 5% GPA · Luxury Goods</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor in Civil Engineering</div>
+        <div class="edu-school">Le Quy Don University, Hanoi</div>
+        <div class="edu-year">2011</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <div class="container reveal">
+    <div class="section-label">Skills</div>
+    <h2>Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Data &amp; Analytics</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Excel / VBA</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Power Automate</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Python</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Finance Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Bloomberg</span>
+          <span class="skill-tag">Refinitiv</span>
+          <span class="skill-tag">M&amp;A Modeling</span>
+          <span class="skill-tag">DCF</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Vietnamese (Native)</span>
+          <span class="skill-tag">English (C2)</span>
+          <span class="skill-tag">Italian (C1)</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Domains</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Corporate Development</span>
+          <span class="skill-tag">M&amp;A</span>
+          <span class="skill-tag">APAC Markets</span>
+          <span class="skill-tag">Commercial Strategy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container reveal">
+    <div class="section-label">Contact</div>
+    <h2>Get in Touch</h2>
+    <p>Open to new opportunities and collaborations. Feel free to reach out.</p>
+    <div class="contact-cards">
+      <a class="contact-card" href="https://www.linkedin.com/in/pham-hai-hoang-b0055882/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a class="contact-card" href="mailto:hoang1188@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        hoang1188@gmail.com
+      </a>
+      <a class="contact-card" href="tel:+393807677382">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        (+39) 380 7677 382
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Pham Hai Hoang &mdash; Bassano del Grappa, Italy
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
